@@ -11,6 +11,8 @@ $ sudo apt-get install build-essential linux-headers-$(uname -r)
 ## Write your first kernel module
 
 ```c++
+// file: hellomod.c
+
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -41,6 +43,8 @@ module_exit(hello_exit);
 create the following makefile:
 
 ```makefile
+# file: Makefile
+
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 
 .PHONY: all clean
