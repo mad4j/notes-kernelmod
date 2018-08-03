@@ -11,7 +11,7 @@ $ sudo apt-get install build-essential linux-headers-$(uname -r)
 ## Write your first kernel module
 
 ```c++
-// file: hellomod.c
+// file: hellow.c
 
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -21,7 +21,7 @@ MODULE_LICENSE("GPL");
 MODULE_AUTHOR("mad4j");
 MODULE_DESCRIPTION("Simple HelloWorld!! module");
 
-static int __init hello_init(void)
+static int __init hellow_init(void)
 {
 	printk(KERN_INFO "HelloWorld!!\n");
 
@@ -29,13 +29,13 @@ static int __init hello_init(void)
 	return 0;
 }
 
-static void __exit hello_exit(void)
+static void __exit hellow_exit(void)
 {
 	printk(KERN_INFO "Goodbye!!\n");
 }
 
-module_init(hello_init);
-module_exit(hello_exit);
+module_init(hellow_init);
+module_exit(hellow_exit);
 ```
 
 ## Build
@@ -49,7 +49,7 @@ KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 
 .PHONY: all clean
 
-obj-m += hellomod.o
+obj-m += hellowmod.o
 
 all:
 	$(MAKE) -C $(KERNELDIR)o M=$(PWD) modules
